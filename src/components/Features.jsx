@@ -1,5 +1,6 @@
 import React from 'react'
 import { QrCode, Smartphone, BarChart3, Tv2, Clock } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function Features() {
   const items = [
@@ -32,17 +33,30 @@ export default function Features() {
 
   return (
     <section id="product" className="relative z-10 mx-auto max-w-7xl px-6 py-24">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {items.map((f) => (
-          <div key={f.title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: '-100px' }}
+        variants={{ hidden: {}, show: {} }}
+        className="grid grid-cols-1 gap-6 md:grid-cols-3"
+      >
+        {items.map((f, idx) => (
+          <motion.div
+            key={f.title}
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.08 }}
+            className="rounded-2xl border border-white/10 bg-white/5 p-6"
+          >
             <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white">
               {f.icon}
             </div>
             <h3 className="text-white font-semibold">{f.title}</h3>
             <p className="mt-1 text-white/70 text-sm">{f.desc}</p>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -1,9 +1,15 @@
 import React from 'react'
 import { Menu, QrCode, Sparkles } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function Navbar() {
   return (
-    <header className="relative z-20 w-full">
+    <motion.header
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="relative z-20 w-full"
+    >
       <div className="mx-auto max-w-7xl px-6 py-5">
         <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-4 sm:px-6 py-3">
           <div className="flex items-center gap-3">
@@ -27,16 +33,21 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a href="#app" className="group inline-flex items-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500/20 transition">
+            <motion.a
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              href="#app"
+              className="group inline-flex items-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500/20 transition"
+            >
               <QrCode className="h-4 w-4" />
               Get the app
-            </a>
+            </motion.a>
             <button className="md:hidden grid place-items-center h-10 w-10 rounded-xl border border-white/10 bg-white/5 text-white/80">
               <Menu className="h-5 w-5" />
             </button>
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   )
 }

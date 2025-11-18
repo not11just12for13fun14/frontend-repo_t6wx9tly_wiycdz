@@ -1,10 +1,17 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 export default function CTA() {
   return (
     <section id="advertisers" className="relative z-10 mx-auto max-w-7xl px-6 py-24">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div className="rounded-2xl border border-cyan-400/30 bg-cyan-500/10 p-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="rounded-2xl border border-cyan-400/30 bg-cyan-500/10 p-8"
+        >
           <h3 className="text-white text-2xl font-bold">For Advertisers</h3>
           <p className="mt-2 text-white/80">Bake conversion into your creative. Place a smart QR in-frame and guide viewers to immediate action.</p>
           <ul className="mt-4 space-y-2 text-white/80 text-sm list-disc list-inside">
@@ -12,9 +19,22 @@ export default function CTA() {
             <li>Seamless handoff to the companion app</li>
             <li>Closed-loop measurement</li>
           </ul>
-          <a href="#contact" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-5 py-3 font-semibold hover:bg-neutral-200 transition">Book a strategy call</a>
-        </div>
-        <div className="rounded-2xl border border-fuchsia-400/30 bg-fuchsia-500/10 p-8">
+          <motion.a
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            href="#contact"
+            className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-5 py-3 font-semibold hover:bg-neutral-200 transition"
+          >
+            Book a strategy call
+          </motion.a>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="rounded-2xl border border-fuchsia-400/30 bg-fuchsia-500/10 p-8"
+        >
           <h3 className="text-white text-2xl font-bold">For Brands</h3>
           <p className="mt-2 text-white/80">Make moments stick. Every scan saves content to revisit when the audience has time to engage.</p>
           <ul className="mt-4 space-y-2 text-white/80 text-sm list-disc list-inside">
@@ -22,8 +42,15 @@ export default function CTA() {
             <li>Shoppable and shareable links</li>
             <li>CRM-friendly exports</li>
           </ul>
-          <a href="#demo" className="mt-6 inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-5 py-3 font-semibold text-white hover:bg-white/10 transition">See the product</a>
-        </div>
+          <motion.a
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            href="#demo"
+            className="mt-6 inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-5 py-3 font-semibold text-white hover:bg-white/10 transition"
+          >
+            See the product
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   )
